@@ -1,59 +1,111 @@
-# CryptoDashboard
+# 📊 Crypto Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.1.
+Dashboard de criptomonedas desarrollado en **Angular** (frontend) y **Node.js + Express** (backend).  
+El proyecto consume la **API de CoinGecko** para mostrar precios, variaciones y gráficos históricos de criptos populares.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Características
 
-```bash
-ng serve
+- Listado de criptomonedas populares (BTC, ETH, SOL, BNB, XRP).  
+- Búsqueda por símbolo o nombre (`btc`, `bitcoin`, `eth`, etc.).  
+- Variación de precio en % con colores (verde/rojo).  
+- Gráfico histórico al entrar en el detalle de cada moneda.  
+- Backend con caché en memoria (LRU) para optimizar requests a la API.  
+
+---
+
+## 📂 Estructura
+
+```
+crypto-dashboard/
+├── backend/           # Servidor Express (API local)
+│   ├── server.js
+│   ├── package.json
+│   └── ...
+├── src/               # Frontend Angular
+├── proxy.conf.json    # Proxy para redirigir /api → backend
+├── package.json       # Configuración Angular
+└── README.md
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🛠️ Instalación
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Clonar el repositorio:
 
 ```bash
-ng generate --help
+git clone https://github.com/RamiroTaverna/crypto-dashboard.git
+cd crypto-dashboard
 ```
 
-## Building
-
-To build the project run:
+### 1. Instalar dependencias del frontend (Angular)
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### 2. Instalar dependencias del backend (Express)
 
 ```bash
-ng test
+cd backend
+npm install
+cd ..
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## ▶️ Ejecución
 
+Necesitás **dos terminales** abiertas al mismo tiempo:
+
+### 🖥️ Terminal 1 — Backend
 ```bash
-ng e2e
+cd backend
+npm start
 ```
+Esto levanta el servidor Express en:  
+👉 `http://localhost:3000/api`
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### 🌐 Terminal 2 — Frontend
+En la raíz del proyecto:
+```bash
+ng serve -o --proxy-config proxy.conf.json
+```
+Esto levanta Angular en:  
+👉 `http://localhost:4200/dashboard`
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📊 Endpoints de prueba del backend
+
+- `http://localhost:3000/api/dashboard?ids=bitcoin,ethereum,solana`
+- `http://localhost:3000/api/coin/bitcoin/history?days=30&interval=daily`
+
+---
+
+## 📋 Objetivos del Challenge
+
+- Aprender a consumir APIs externas (CoinGecko).  
+- Calcular y mostrar indicadores financieros (ejemplo: RSI).  
+- Presentar la información de forma clara y visual en un dashboard estilo exchange.  
+
+---
+
+## 📸 Capturas (ejemplo)
+
+- **Dashboard con lista de criptos**  
+- **Detalle de Bitcoin con gráfico histórico**
+
+*(Agregá tus propias capturas cuando tengas la UI corriendo 👀)*
+
+---
+
+## ⚡ Tecnologías
+
+- **Frontend**: Angular 17 + Angular Material + Chart.js  
+- **Backend**: Node.js, Express, LRU Cache, node-fetch  
+- **API**: [CoinGecko](https://www.coingecko.com/en/api)
+
+---
