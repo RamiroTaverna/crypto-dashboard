@@ -1,0 +1,8 @@
+<div class="toolbar">
+  <button (click)="days=7; load()">7d</button>
+  <button (click)="days=30; load()">30d</button>
+  <button (click)="days=90; load()">90d</button>
+  <button (click)="days=365; load()">1y</button>
+</div>
+
+<canvas baseChart [data]="chartData" [type]="'line'"></canvas>
