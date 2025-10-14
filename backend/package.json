@@ -11,9 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chart.js": "^4.5.1",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "lru-cache": "^11.2.1",
-    "node-fetch": "^3.3.2"
+    "lru-cache": "^11.2.2",
+    "ng2-charts": "^8.0.0",
+    "node-fetch": "^3.3.2",
+    "path": "^0.12.7"
   }
 }
